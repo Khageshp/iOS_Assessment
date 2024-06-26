@@ -35,23 +35,31 @@ class UIKitController: UIViewController {
           guard let location else {
               return
           }
-          guard let url = currentWeatherURL(location: location) else {
-              return
-          }
-          NetworkService().fetchData(from: url) { response in
+//          guard let url = currentWeatherURL(location: location) else {
+//              return
+//          }
+          
+          WeatherService.live.retrieveCurrentWeather(location: location) { response in
               switch response {
               case .success(let data):
-                  do {
-                      let currentWeather = try JSONDecoder().decode(CurrentWeatherJSONData.self, from: data)
-                      print(currentWeather)
-                  } catch {
-                      print(error)
-                  }
+                  print(data)
               case .failure(let error):
                   print(error)
               }
-
           }
+//          NetworkService().fetchData(from: url) { response in
+//              switch response {
+//              case .success(let data):
+//                  do {
+//                      let currentWeather = try JSONDecoder().decode(CurrentWeatherJSONData.self, from: data)
+//                      print(currentWeather)
+//                  } catch {
+//                      print(error)
+//                  }
+//              case .failure(let error):
+//                  print(error)
+//              }
+//          }
       }
           
   }
