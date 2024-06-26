@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CEDC6AE2C2BA28400CDE28E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDC6AD2C2BA28400CDE28E /* NetworkService.swift */; };
 		9B0033422BFED3CF0057F235 /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0033412BFED3CF0057F235 /* SimpleError.swift */; };
 		9B1FE3652BC0A09200F0A259 /* SampleAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3642BC0A09200F0A259 /* SampleAddresses.swift */; };
 		9B1FE3672BC0A0FD00F0A259 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3662BC0A0FD00F0A259 /* AddressService.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4CEDC6AD2C2BA28400CDE28E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		9B0033412BFED3CF0057F235 /* SimpleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleError.swift; sourceTree = "<group>"; };
 		9B1FE3642BC0A09200F0A259 /* SampleAddresses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAddresses.swift; sourceTree = "<group>"; };
 		9B1FE3662BC0A0FD00F0A259 /* AddressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressService.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -329,6 +331,7 @@
 				9BAA25782BC7815F00AA42B3 /* AddressServiceMock.swift */,
 				9B1FE3AB2BC6F49600F0A259 /* WeatherService.swift */,
 				9B1FE3AD2BC6F4B000F0A259 /* WeatherServiceURL.swift */,
+				4CEDC6AD2C2BA28400CDE28E /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				9B7651D12BEF1C5A009CCC56 /* Double+Extensions.swift in Sources */,
 				9B1FE3952BC5DC2800F0A259 /* ForecastJSONDataMock.swift in Sources */,
 				9B98F4742BCEDB57008B5876 /* HostControllerDelegate.swift in Sources */,
+				4CEDC6AE2C2BA28400CDE28E /* NetworkService.swift in Sources */,
 				9B1FE36B2BC497EA00F0A259 /* Environment.swift in Sources */,
 				9BD0A8FF2BBFA8DE00953018 /* NavigationHandler.swift in Sources */,
 				9BD0A8FC2BBFA02800953018 /* ReactiveSwift+Extensions.swift in Sources */,

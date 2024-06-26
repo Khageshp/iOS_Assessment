@@ -29,5 +29,30 @@ class UIKitController: UIViewController {
       make.trailing.equalTo(view).inset(16)
       make.centerY.equalTo(view)
     }
+      
+      // Test the Network Service
+      AddressService.live.coordinatesCompletion("8020 Towers Crescent Dr, Tysons, VA 22182") { location, error in
+          guard let location else {
+              return
+          }
+          guard let url = currentWeatherURL(location: location) else {
+              return
+          }
+          NetworkService().fetchData(from: url) { response in
+              switch response {
+              case .success(let data):
+                  do {
+                      let currentWeather = try JSONDecoder().decode(CurrentWeatherJSONData.self, from: data)
+                      print(currentWeather)
+                  } catch {
+                      print(error)
+                  }
+              case .failure(let error):
+                  print(error)
+              }
+
+          }
+      }
+          
   }
 }
