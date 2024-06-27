@@ -42,7 +42,7 @@ protocol WeatherServiceProtocol {
  Service for retrieving weather and forecost data using a network service.
  - SeeAlso: `WeatherServiceProtocol` - Conforms to the `WeatherServiceProtocol` protocol.
  */
-struct WeatherService {
+struct WeatherService: WeatherServiceProtocol {
     
     private let networkService: NetworkServiceProtocol
     
