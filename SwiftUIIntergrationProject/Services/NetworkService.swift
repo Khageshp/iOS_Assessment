@@ -9,16 +9,16 @@ import Foundation
 
 /**
  Enumeration representing various network-related errors.
-
+ 
  - SeeAlso: `Error` - Conforms to the Swift `Error` protocol.
  */
-enum NetworkError: Error {
+enum NetworkError: Error, Equatable {
     case invalidURL
     case invalidData
     case invalidResponse
     case noInternetConnection
     case message(_ error: Error?)
-
+    
     var errorMessage: String {
         switch self {
         case .invalidURL:
@@ -33,6 +33,30 @@ enum NetworkError: Error {
             return NetworkErrorMessage.unknownErrorMessage
         }
     }
+    
+    static func == (lhs: NetworkError, rhs: NetworkError) -> Bool {
+        switch (lhs, rhs) {
+        case (.invalidURL, .invalidURL):
+            return true
+        case (.invalidData, .invalidData):
+            return true
+        case (.invalidResponse, .invalidResponse):
+            return true
+        case (.noInternetConnection, .noInternetConnection):
+            return true
+        case (.message(let lhsError), .message(let rhsError)):
+            // Compare the errors if they are not nil
+            if let lhsError = lhsError, let rhsError = rhsError {
+                return (lhsError as NSError).domain == (rhsError as NSError).domain &&
+                (lhsError as NSError).code == (rhsError as NSError).code
+            }
+            // If both errors are nil, they are considered equal
+            return lhsError == nil && rhsError == nil
+        default:
+            return false
+        }
+    }
+    
 }
 
 protocol NetworkServiceProtocol {
@@ -41,23 +65,29 @@ protocol NetworkServiceProtocol {
 
 /**
  A foundation class responsible for making API calls.
-
+ 
  - SeeAlso: `NetworkServiceProtocol` - Conforms to the `NetworkServiceProtocol` protocol.
-
+ 
  */
 
 class NetworkService: NetworkServiceProtocol {
     
+    private let session: URLSessionProtocol
+    
+    init(session: URLSessionProtocol = URLSession.shared) {
+        self.session = session
+    }
+    
     /**
      Fetches data from the specified URL and calls the completion handler with either the fetched data or an error.
-
+     
      - Parameters:
-        - url: The URL from which to fetch the data.
-        - completion: The completion handler called when the operation completes, with a `Result` enum indicating success (`Data`) or failure (`NetworkError`).
-
+     - url: The URL from which to fetch the data.
+     - completion: The completion handler called when the operation completes, with a `Result` enum indicating success (`Data`) or failure (`NetworkError`).
+     
      */
     func fetchData(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        self.session.dataTask(with: url) { data, response, error in
             // Check if there's an error returned from the data task.
             if let error = error {
                 // If there's an error, call the completion handler with a failure case,
@@ -90,17 +120,39 @@ class NetworkService: NetworkServiceProtocol {
     }
     
     private func mapError(_ error: Error) -> NetworkError {
-            if let urlError = error as? URLError {
-                switch urlError.code {
-                case .notConnectedToInternet, .networkConnectionLost:
-                    return .noInternetConnection
-                case .badURL:
-                    return .invalidURL
-                default:
-                    return .message(error)
-                }
-            } else {
+        if let urlError = error as? URLError {
+            switch urlError.code {
+            case .notConnectedToInternet, .networkConnectionLost:
+                return .noInternetConnection
+            case .badURL, .unsupportedURL:
+                return .invalidURL
+            default:
                 return .message(error)
             }
+        } else {
+            return .message(error)
         }
+    }
+}
+
+// Protocol that abstracts URLSessionDataTask to enable mocking for testing purposes
+protocol URLSessionDataTaskProtocol {
+    func resume()
+}
+
+// Make URLSessionDataTask conform to URLSessionDataTaskProtocol to use it in the production code
+extension URLSessionDataTask: URLSessionDataTaskProtocol {}
+
+// Protocol that abstracts URLSession to enable mocking for testing purposes
+protocol URLSessionProtocol {
+    // Method to create a data task that conforms to URLSessionDataTaskProtocol
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol
+}
+
+// Make URLSession conform to URLSessionProtocol to use it in the production code
+extension URLSession: URLSessionProtocol {
+    func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
+        // Return the data task as URLSessionDataTask which conforms to URLSessionDataTaskProtocol
+        return dataTask(with: url, completionHandler: completionHandler) as URLSessionDataTask
+    }
 }

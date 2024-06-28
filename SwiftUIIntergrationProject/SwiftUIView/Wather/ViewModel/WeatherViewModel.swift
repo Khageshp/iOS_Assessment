@@ -14,7 +14,10 @@ import CoreLocation
 final class WeatherViewModel: ObservableObject {
     
     // MARK: - Properties
-        
+    
+    private let addressService: AddressService
+    private let weatherService: WeatherServiceProtocol
+    
     // Placeholder for Addresses type (assuming it's properly initialized)
     var addresses = Addresses
     
@@ -24,13 +27,20 @@ final class WeatherViewModel: ObservableObject {
     // Display data properties
     @Published var weatherDisplayData: CurrentWeatherDisplayData?
     @Published var forecast: ForecastDisplayData?
-
+    
+    // MARK: - Initialization
+    
+    init(addressService: AddressService = AddressService.live,
+         weatherService: WeatherServiceProtocol = WeatherService.live) {
+        self.addressService = addressService
+        self.weatherService = weatherService
+    }
     // MARK: - Methods
     
     // Method to retrieve current weather and forecast for a given address
     func retrieveCurrentWeatherAndForecast(address: String) {
         // Convert address to coordinates
-        AddressService.live.coordinatesCompletion(address) { [weak self] location, error in
+        self.addressService.coordinatesCompletion(address) { [weak self] location, error in
             guard let self = self else { return }
             if let location = location {
                 // Retrieve weather and forecast data using obtained location
@@ -46,7 +56,7 @@ final class WeatherViewModel: ObservableObject {
     func retrieveCurrentWeather(location: CLLocation) {
         
         // Fetch current weather data using WeatherService
-        WeatherService.live.retrieveCurrentWeather(location: location) { [weak self] result in
+        self.weatherService.retrieveCurrentWeather(location: location) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
@@ -64,7 +74,7 @@ final class WeatherViewModel: ObservableObject {
     func retrieveWeatherForecast(location: CLLocation) {
         
         // Fetch weather forecast data using WeatherService
-        WeatherService.live.retrieveWeatherForecast(location: location) { [weak self] result in
+        self.weatherService.retrieveWeatherForecast(location: location) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 
