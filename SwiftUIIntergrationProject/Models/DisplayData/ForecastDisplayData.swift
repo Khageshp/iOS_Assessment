@@ -11,7 +11,7 @@ struct ForecastDisplayData: Equatable{
   let forecastItems: [ForecastItemDisplayData]
 }
 
-struct ForecastItemDisplayData: Equatable, Identifiable {
+struct ForecastItemDisplayData: Equatable, Identifiable, Hashable {
   let id: String
   
   let timeDateText: String

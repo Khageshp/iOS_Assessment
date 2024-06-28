@@ -11,21 +11,28 @@ import Foundation
  Enumeration representing various network-related errors.
 
  - SeeAlso: `Error` - Conforms to the Swift `Error` protocol.
-
  */
 enum NetworkError: Error {
-
-    // Case to represent an invalid URL error.
     case invalidURL
-    
-    // Case to represent an error where the received data is invalid or nil.
     case invalidData
-    
-    // Case to represent an invalid HTTP response error, e.g., status code is not 200-299.
     case invalidResponse
-    
-    // Case to represent any other error, optionally wrapping another Error.
+    case noInternetConnection
     case message(_ error: Error?)
+
+    var errorMessage: String {
+        switch self {
+        case .invalidURL:
+            return NetworkErrorMessage.invalidURLMessage
+        case .invalidData:
+            return NetworkErrorMessage.invalidDataMessage
+        case .invalidResponse:
+            return NetworkErrorMessage.invalidResponseMessage
+        case .noInternetConnection:
+            return NetworkErrorMessage.noInternetMessage
+        case .message(_):
+            return NetworkErrorMessage.unknownErrorMessage
+        }
+    }
 }
 
 protocol NetworkServiceProtocol {
@@ -55,7 +62,8 @@ class NetworkService: NetworkServiceProtocol {
             if let error = error {
                 // If there's an error, call the completion handler with a failure case,
                 // wrapping the error inside the .message case of NetworkError.
-                completion(.failure(.message(error)))
+                let networkError = self.mapError(error)
+                completion(.failure(networkError))
                 return
             }
             
@@ -80,4 +88,19 @@ class NetworkService: NetworkServiceProtocol {
             completion(.success(data))
         }.resume() // Start the data task.
     }
+    
+    private func mapError(_ error: Error) -> NetworkError {
+            if let urlError = error as? URLError {
+                switch urlError.code {
+                case .notConnectedToInternet, .networkConnectionLost:
+                    return .noInternetConnection
+                case .badURL:
+                    return .invalidURL
+                default:
+                    return .message(error)
+                }
+            } else {
+                return .message(error)
+            }
+        }
 }

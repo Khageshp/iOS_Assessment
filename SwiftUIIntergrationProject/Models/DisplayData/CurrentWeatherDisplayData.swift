@@ -19,9 +19,9 @@ extension CurrentWeatherDisplayData {
   init(from jsonData: CurrentWeatherJSONData) {
     nameOfLocationText = jsonData.name
     let weatherText = jsonData.weather.first?.description ?? "Not Available"
-    currentWeatherText = "Current Weather: \(weatherText)"
+    currentWeatherText = "\(weatherText)"
     let temperature = jsonData.main.temp.rounded(.towardZero)
-    temperatureText = "Temperature: \(temperature)F"
+    temperatureText = "Current temperature: \(temperature) F"
     let wind = jsonData.wind.speed.rounded(.towardZero)
     let direction = jsonData.wind.direction
     windSpeedText = "Wind: \(wind) mph"
