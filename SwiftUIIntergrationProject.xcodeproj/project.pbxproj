@@ -10,27 +10,21 @@
 		4C09345E2C2D8422006435A1 /* AddressListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09345D2C2D8422006435A1 /* AddressListView.swift */; };
 		4C0934602C2D85D9006435A1 /* WeatherReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09345F2C2D85D9006435A1 /* WeatherReportView.swift */; };
 		4C0934622C2D9058006435A1 /* ForecastListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0934612C2D9058006435A1 /* ForecastListView.swift */; };
-		4C30F0A22C2E9606004BEAD3 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3662BC0A0FD00F0A259 /* AddressService.swift */; };
-		4C30F0A32C2E986B004BEAD3 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC56AF42C2E727D00DD996D /* WeatherViewModel.swift */; };
 		4C30F0A42C2E9EE2004BEAD3 /* ForecastDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3E41D22C0FC1DD009C0757 /* ForecastDisplayData.swift */; };
-		4C30F0A72C2EA007004BEAD3 /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0033412BFED3CF0057F235 /* SimpleError.swift */; };
-		4C30F0A82C2EA023004BEAD3 /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0033412BFED3CF0057F235 /* SimpleError.swift */; };
-		4C30F0A92C2EA033004BEAD3 /* EnvironmentMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3A72BC63EB500F0A259 /* EnvironmentMock.swift */; };
-		4C30F0AA2C2EA045004BEAD3 /* SampleAddresses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3642BC0A09200F0A259 /* SampleAddresses.swift */; };
-		4C30F0AB2C2EA04B004BEAD3 /* CurrentWeatherDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3E41D02C0FC1C1009C0757 /* CurrentWeatherDisplayData.swift */; };
-		4C30F0AD2C2EA0E0004BEAD3 /* AddressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3662BC0A0FD00F0A259 /* AddressService.swift */; };
+		4C595BDB2C2EAB02005C732E /* CurrentWeatherDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3E41D02C0FC1C1009C0757 /* CurrentWeatherDisplayData.swift */; };
+		4C595BDC2C2EAB12005C732E /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7651D02BEF1C5A009CCC56 /* Double+Extensions.swift */; };
+		4C595BDD2C2EABE1005C732E /* WeatherString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC56AF02C2E614700DD996D /* WeatherString.swift */; };
+		4C595BDE2C2EAC14005C732E /* OpenWeatherAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A8EA2BBE1A4400953018 /* OpenWeatherAPIKey.swift */; };
 		4CC56AF12C2E614700DD996D /* WeatherString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC56AF02C2E614700DD996D /* WeatherString.swift */; };
 		4CC56AF52C2E727D00DD996D /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC56AF42C2E727D00DD996D /* WeatherViewModel.swift */; };
 		4CC56AF72C2E73CB00DD996D /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC56AF62C2E73CB00DD996D /* NetworkServiceTests.swift */; };
 		4CC56AF82C2E761400DD996D /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDC6AD2C2BA28400CDE28E /* NetworkService.swift */; };
-		4CC56AF92C2E796F00DD996D /* WeatherString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC56AF02C2E614700DD996D /* WeatherString.swift */; };
 		4CC56AFB2C2E87BF00DD996D /* WeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC56AFA2C2E87BF00DD996D /* WeatherServiceTests.swift */; };
 		4CC56AFC2C2E8BD500DD996D /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3AB2BC6F49600F0A259 /* WeatherService.swift */; };
 		4CC56AFD2C2E8D0F00DD996D /* CurrentWeatherJSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3732BC49BAE00F0A259 /* CurrentWeatherJSONData.swift */; };
 		4CC56AFE2C2E8D2300DD996D /* ForecastJSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3682BC0EE0500F0A259 /* ForecastJSONData.swift */; };
 		4CC56AFF2C2E8D4400DD996D /* WeatherServiceURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3AD2BC6F4B000F0A259 /* WeatherServiceURL.swift */; };
 		4CC56B002C2E8D4D00DD996D /* CurrentWeatherJSONDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3922BC5DAB700F0A259 /* CurrentWeatherJSONDataMock.swift */; };
-		4CC56B012C2E8D5C00DD996D /* OpenWeatherAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD0A8EA2BBE1A4400953018 /* OpenWeatherAPIKey.swift */; };
 		4CC56B022C2E8D6000DD996D /* ForecastJSONDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1FE3942BC5DC2800F0A259 /* ForecastJSONDataMock.swift */; };
 		4CEDC6AE2C2BA28400CDE28E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDC6AD2C2BA28400CDE28E /* NetworkService.swift */; };
 		9B0033422BFED3CF0057F235 /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0033412BFED3CF0057F235 /* SimpleError.swift */; };
@@ -591,14 +585,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC56B002C2E8D4D00DD996D /* CurrentWeatherJSONDataMock.swift in Sources */,
-				4C30F0A32C2E986B004BEAD3 /* WeatherViewModel.swift in Sources */,
-				4CC56B012C2E8D5C00DD996D /* OpenWeatherAPIKey.swift in Sources */,
+				4C595BDB2C2EAB02005C732E /* CurrentWeatherDisplayData.swift in Sources */,
 				4C30F0A42C2E9EE2004BEAD3 /* ForecastDisplayData.swift in Sources */,
+				4C595BDE2C2EAC14005C732E /* OpenWeatherAPIKey.swift in Sources */,
 				4CC56AFD2C2E8D0F00DD996D /* CurrentWeatherJSONData.swift in Sources */,
 				4CC56B022C2E8D6000DD996D /* ForecastJSONDataMock.swift in Sources */,
 				4CC56AFB2C2E87BF00DD996D /* WeatherServiceTests.swift in Sources */,
-				4C30F0A82C2EA023004BEAD3 /* SimpleError.swift in Sources */,
-				4C30F0A22C2E9606004BEAD3 /* AddressService.swift in Sources */,
+				4C595BDD2C2EABE1005C732E /* WeatherString.swift in Sources */,
+				4C595BDC2C2EAB12005C732E /* Double+Extensions.swift in Sources */,
 				4CC56AFC2C2E8BD500DD996D /* WeatherService.swift in Sources */,
 				4CC56AF72C2E73CB00DD996D /* NetworkServiceTests.swift in Sources */,
 				9BAA25792BC7815F00AA42B3 /* AddressServiceMock.swift in Sources */,
@@ -606,7 +600,6 @@
 				4CC56AFF2C2E8D4400DD996D /* WeatherServiceURL.swift in Sources */,
 				9BBD8D0D2BBC561000A5F295 /* SwiftUIIntergrationProjectTests.swift in Sources */,
 				4CC56AFE2C2E8D2300DD996D /* ForecastJSONData.swift in Sources */,
-				4CC56AF92C2E796F00DD996D /* WeatherString.swift in Sources */,
 				4CC56AF82C2E761400DD996D /* NetworkService.swift in Sources */,
 				9BAA25772BC77D6B00AA42B3 /* TestObserver.swift in Sources */,
 			);
@@ -616,13 +609,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C30F0AA2C2EA045004BEAD3 /* SampleAddresses.swift in Sources */,
-				4C30F0A92C2EA033004BEAD3 /* EnvironmentMock.swift in Sources */,
-				4C30F0A72C2EA007004BEAD3 /* SimpleError.swift in Sources */,
 				9BBD8D192BBC561000A5F295 /* SwiftUIIntergrationProjectUITestsLaunchTests.swift in Sources */,
 				9BBD8D172BBC561000A5F295 /* SwiftUIIntergrationProjectUITests.swift in Sources */,
-				4C30F0AB2C2EA04B004BEAD3 /* CurrentWeatherDisplayData.swift in Sources */,
-				4C30F0AD2C2EA0E0004BEAD3 /* AddressService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
