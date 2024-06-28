@@ -21,6 +21,5 @@ struct NetworkErrorMessage {
     static let invalidResponseMessage = "The server response was invalid. Please try again."
     static let unknownErrorMessage = "An unknown error occurred. Please try again."
     static let noInternetMessage = "Please check your connection and try again."
-    
 }
 
